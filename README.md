@@ -1,3 +1,2 @@
 # 
-hello hello
-My repository
+bayesian inference
