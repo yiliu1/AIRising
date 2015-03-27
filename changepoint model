@@ -1,0 +1,19 @@
+data {
+  N<-length(message)
+}
+
+model {  
+ 
+n~dpois(20)
+
+for(k in 1:2){
+lamda[k]~dpois(10)
+}
+
+for(i in 1:N){
+
+message[i]~dpois(ifelse(i<n,lamda[1],lamda[2]))
+
+}
+  
+}
