@@ -1,0 +1,21 @@
+data{N<-length(temperature)}
+
+model {
+  # Create a model, following the instructions in the notes from lecture 3
+  slope ~dnorm(0,0.001)
+ intercept ~ dnorm(0,0.001)
+ for(i in 1:N){
+
+ 
+ p[i]<-1/(1+exp(-slope*temperature[i]-intercept))
+ 
+ incident[i]~dbern(p[i])
+  
+ }
+   
+  p_predicted<-ilogit(intercept+slope*31)
+  incident_predicted~dbern(p_predicted)
+  
+}
+  
+  
