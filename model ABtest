@@ -1,0 +1,16 @@
+data {
+  numA <- 51
+  xA <- 45
+  numB <- 47
+  xB <- 37
+}
+
+model {  
+  # Define the following variables: zA, zB, xA, xB, and isAbetter,
+zA~dunif(0, 1)
+zB~dunif(0, 1)
+xA~dbin(zA,numA)
+xB~dbin(zB,numB)
+# where isAbetter is an indicator variable that zA is larger than zB
+isAbetter<-zA>zB
+}
